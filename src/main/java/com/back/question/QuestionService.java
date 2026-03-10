@@ -11,12 +11,12 @@ import java.util.Optional;
 @RequiredArgsConstructor
 @Service
 public class QuestionService {
+
     private final QuestionRepository questionRepository;
 
-    public List<Question> getList() {
+    public List<Question> getList(){
         return this.questionRepository.findAll();
     }
-
     public Question getQuestion(Integer id) {
         Optional<Question> question = this.questionRepository.findById(id);
         if (question.isPresent()) {
@@ -25,7 +25,6 @@ public class QuestionService {
             throw new DataNotFoundException("question not found");
         }
     }
-
     public void create(String subject, String content) {
         Question q = new Question();
         q.setSubject(subject);
@@ -33,4 +32,5 @@ public class QuestionService {
         q.setCreateDate(LocalDateTime.now());
         this.questionRepository.save(q);
     }
+
 }

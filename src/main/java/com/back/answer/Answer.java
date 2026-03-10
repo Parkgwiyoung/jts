@@ -15,6 +15,9 @@ public class Answer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @Column(length = 200)
+    private String subjet;
+
     @Column(columnDefinition = "TEXT")
     private String content;
 
